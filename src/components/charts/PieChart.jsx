@@ -1,73 +1,62 @@
-import React from 'react'
+import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 import LegendCustom from './LegendCustom';
 
-export default function PieChart() {
-    const seriesData = [55, 44, 28, 28, 10, 10];
+export default function PieChart({ data }) {
     const options = {
-      series: seriesData,
-      options: {
         chart: {
-          width: 380,
-          type: "pie",
+            width: 380,
+            type: "pie",
         },
-  
         stroke: {
-          show: false,
+            show: false,
         },
         legend: {
-          show: false,
+            show: false,
         },
         dataLabels: {
-          enabled: false, // Disable the display of percentage labels
+            enabled: false, // Disable the display of percentage labels
         },
-        colors: [
-          "#008FFB",
-          "#00E396",
-          "#FEB019",
-          "#FF4560",
-          "#775DD0",
-          "#00D9E9",
-        ],
+        colors: data.map(item => item.color), // Use colors specified in data array
         responsive: [
-          {
-            breakpoint: 480,
-            options: {
-              chart: {
-                width: 200,
-              },
-              legend: {
-                position: "right",
-              },
+            {
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200,
+                    },
+                    legend: {
+                        position: "right",
+                    },
+                },
             },
-          },
         ],
-      },
     };
-  return (
-    <div id="chart" className="flex flex-col items-center justify-center">
-    <style jsx global>{`
-      .apexcharts-legend-marker {
-        border-radius: 2px !important; /* Set border radius for legend markers */
-      }
-    `}</style>
-    <ReactApexChart
-      options={options.options}
-      series={options.series}
-      type="pie"
-      width={220}
-      height={220}
-    />
-    <div className="grid grid-cols-2 items-center justify-center gap-x-12 mt-4">
-      {seriesData.map((item, index) => (
-        <LegendCustom
-          key={index}
-          bgColor={options.options.colors[index]}
-          item={"Team"}
-          percentage={item}
-        />
-      ))}
-    </div>
-  </div>
-  )
+
+    return (
+        <div id="chart" className="flex flex-col items-center justify-center">
+            <style jsx global>{`
+                .apexcharts-legend-marker {
+                    border-radius: 2px !important; /* Set border radius for legend markers */
+                }
+            `}</style>
+            <ReactApexChart
+                options={options}
+                series={data.map(item => item.value)}
+                type="pie"
+                width={220}
+                height={220}
+            />
+            <div className="grid grid-cols-2 items-center gap-y-2 justify-center mt-4">
+                {data.map((item, index) => (
+                    <LegendCustom
+                        key={index}
+                        bgColor={item.color}
+                        item={item.label}
+                        percentage={item.value}
+                    />
+                ))}
+            </div>
+        </div>
+    );
 }

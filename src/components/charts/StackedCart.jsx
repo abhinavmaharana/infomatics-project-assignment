@@ -8,7 +8,7 @@ export default function StackedCart({data}) {
           chart: {
             type: "bar",
             stacked: true,
-            height: 350,
+            height: 200,
             toolbar: {
               show: false, // Hide toolbar
             },
@@ -49,14 +49,7 @@ export default function StackedCart({data}) {
           fill: {
             opacity: 1,
           },
-          colors: [
-            "#008FFB",
-            "#00E396",
-            "#FEB019",
-            "#FF4560",
-            "#775DD0",
-            "#F98404",
-          ],
+          colors: data.series?.map(item => item.color)
         },
         series: [
           {
@@ -102,7 +95,7 @@ export default function StackedCart({data}) {
         }
       }, [data]);
   return (
-    <div className="stacked-bar-chart w-full">
+    <div className="stacked-bar-chart w-full lg:-mt-5">
       <style jsx global>{`
         .apexcharts-xaxis-tick,
         .apexcharts-gridline {
@@ -113,10 +106,10 @@ export default function StackedCart({data}) {
         options={chartData.options}
         series={chartData.series}
         type="bar"
-        height={70}
+        height={100}
         width={"100%"}
       />
-      <div className="grid grid-cols-2 items-center gap-x-2 justify-center">
+      <div className="grid grid-cols-2 items-center space-y-1 justify-center lg:-mt-10">
         {chartData.series.map((item, index) => (
           <LegendCustom
             key={index}

@@ -12,7 +12,7 @@ export default function TreeMapChart() {
         chart: {
           type: "treemap",
           toolbar: {
-            show: false,
+            show: false, 
           },
         },
         series: [
