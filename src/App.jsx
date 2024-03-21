@@ -7,10 +7,10 @@ import TreeMapChart from './components/charts/TreeMapChart'
 function App() {
   const pieChartData = [
     { label: "Flexi Cap Fund", value: 32.19, color:'#75D6FF' },
-    { label: "Small Cap Fund", value: 26.40, color:'#75FFFF' },
-    { label: "Sectoral Fund", value: 26.40, color:'#FFC46A' },
     { label: "ELSS", value: 26.04, color:'#AA75FF'},
+    { label: "Small Cap Fund", value: 26.40, color:'#75FFFF' },
     { label: "Index Fund", value: 12.03, color:'#FF7BF2'},
+    { label: "Sectoral Fund", value: 26.40, color:'#FFC46A' },
     { label: "Large & Mid Cap Fund", value: 12.03, color:'#FF8E5D'}
   ];
   
@@ -24,22 +24,15 @@ function App() {
     ]
   };  
   
-  // const treeMapChartData = [
-  //   { label: "Equity", value: 32.19, color: '#75D6FF' },
-  //   { label: "Bonds", value: 26.40, color: '#75FFFF' },
-  //   { label: "Gold", value: 26.40, color: '#AA75FF' },
-  //   { label:"Govt. Securities", value: 26.40, color:'#FFC46A'}
-  // ];
-
   const treeMapChartData = {
-    labels: ["Oil & Gas", "Pharmaceutical", "Private Bank", "Construction", "Power Generation", "Other"],
+    labels: ["Oil & Gas","Private Bank", "Pharmaceutical", "Construction", "Power Generation", "Other"],
     series: [
-      { name: "Oil & Gas", data: [32.19], color:"" },
-      { name: "Pharmaceutical", data: [26.4] },
-      { name: "Private Bank", data: [26.04] },
-      { name: "Construction", data: [12.03] },
-      { name: "Power Generation", data: [26.4] },
-      { name: "Other", data: [12.03] }
+      { name: "Oil & Gas", data: [32.19], color:"#75D6FF" },
+      { name: "Private Bank", data: [26.04], color:"#AA75FF" },
+      { name: "Pharmaceutical", data: [26.4], color:"#75FFFF" },
+      { name: "Construction", data: [12.03], color:"#FF7BF2" },
+      { name: "Power Generation", data: [26.4], color:"#FFC46A" },
+      { name: "Other", data: [12.03], color:"#FF8E5D" }
     ]
   };  
   
@@ -54,7 +47,7 @@ function App() {
           <StackedCart data={stackedChartData}/>
         </CardBuilder>
         <CardBuilder title={"Top Sectors"} subtitle={"The assets are distributed between equity and cash & equivalents."}>
-          <TreeMapChart />
+          <TreeMapChart data={treeMapChartData} />
         </CardBuilder>
       </div>
     </main>

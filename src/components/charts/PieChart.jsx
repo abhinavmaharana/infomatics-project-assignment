@@ -15,9 +15,9 @@ export default function PieChart({ data }) {
             show: false,
         },
         dataLabels: {
-            enabled: false, // Disable the display of percentage labels
+            enabled: false,
         },
-        colors: data.map(item => item.color), // Use colors specified in data array
+        colors: data.map(item => item.color),
         responsive: [
             {
                 breakpoint: 480,
