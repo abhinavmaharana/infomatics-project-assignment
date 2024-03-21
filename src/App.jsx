@@ -3,6 +3,7 @@ import './App.css'
 import CardBuilder from './components/CardBuilder'
 import PieChart from './components/charts/PieChart'
 import StackedCart from './components/charts/StackedCart'
+import TreeMapChart from './components/charts/TreeMapChart'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,7 +18,7 @@ function App() {
           <StackedCart />
         </CardBuilder>
         <CardBuilder title={"Top Sectors"} subtitle={"The assets are distributed between equity and cash & equivalents."}>
-          <h1>Hello</h1>
+          <TreeMapChart />
         </CardBuilder>
       </div>
     </main>
